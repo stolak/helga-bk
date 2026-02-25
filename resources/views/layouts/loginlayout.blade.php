@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>MBR Finance Application</title>
-	
+<head>
+	<title>{{env('Coy_Name', '')}}</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script src='https://www.google.com/recaptcha/api.js'></script>
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{{ asset('assets/login/images/icons/favicon.ico') }}"/>
 <!--===============================================================================================-->
@@ -25,94 +26,24 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/login/css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/login/css/main.css') }}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-* {box-sizing: border-box;}
+<!--===============================================================================================-->
+@yield('styles')
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #2196F3;
-  color: white;
-}
-
-.topnav .login-container {
-  float: right;
-}
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-  width:120px;
-}
-
-.topnav .login-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background-color: #555;
-  color: white;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.topnav .login-container button:hover {
-  background-color: green;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav .login-container {
-    float: none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .login-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}
-.container {
-  padding: 50px;
-  margin: 10px;
-}
-</style>
 </head>
 <body>
 	
+	
+         
+     
+	
+	<div class="container-login100" style="background-image: url('img/background.jpg');">
 	 @yield('content')
 		
+	</div>
+	
+	
+
+	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->
 	<script src="{{ asset('assets/login/vendor/jquery/jquery-3.2.1.min.js') }}"></script>

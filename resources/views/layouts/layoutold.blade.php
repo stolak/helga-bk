@@ -21,6 +21,7 @@
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
     <link href="{{ asset('assets/plugins/pace/pace.min.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <script src="{{ asset('assets/plugins/pace/pace.min.js')}}"></script>
 <script> var murl = "{{ url('/')}}"; </script>
 
@@ -30,7 +31,7 @@
 <style>
 .navbar-content
 {
-box-shadow: 0 6px 4px -2px #26ae61;
+box-shadow: 0 6px 4px -2px #35dc1b;
 }
 </style>
 <style type="text/css" media="print">
@@ -51,30 +52,25 @@ margin:0px;
 
 <!--TIPS-->
 <!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
-<body>
+<body >
 <div id="container" class="effect aside-float aside-bright mainnav-lg">
 
     <!--NAVBAR-->
     <!--===================================================-->
-    <header id="navbar" class="hidden-print">
-        <div id="navbar-container" class="boxed" style="background: #04a95d;">
+    <header id="navbar" class="hidden-print" style="background:  #020200;">
+        <div id="navbar-container" class="boxed" style="background: #020200;">
 
             <!--Brand logo & name-->
             <!--================================-->
-            <div class="navbar-header" style="background: #04a95d;">
-                <a href="{{url('/')}}" class="navbar-brand" style="background: #04a95d;">
+            <div class="navbar-header" style="background: #020200;">
+                <a href="{{url('/')}}" class="navbar-brand" style="background:  #020200;">
                     <!--<img src="img/logo.png" alt="Nifty Logo" class="brand-icon">-->
                     <div class="brand-title">
-                        <span class="brand-text text-center">PE</span>
+                        <span class="brand-text text-center">SSAS</span>
                     </div>
                 </a>
             </div>
-            <!--================================-->
-            <!--End brand logo & name-->
-
-
-            <!--Navbar Dropdown-->
-            <!--================================-->
+            
             <div class="navbar-content">
                 <ul class="nav navbar-top-links">
 
@@ -85,13 +81,7 @@ margin:0px;
                             <i class="demo-pli-list-view"></i>
                         </a>
                     </li>
-                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                    <!--End Navigation toogle button-->
-
-
-
-                    <!--Search-->
-                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    
                     <li>
                         <div class="custom-search-form">
                             <label class="btn btn-trans" for="search-input" data-toggle="collapse" data-target="#nav-searchbox">
@@ -114,6 +104,11 @@ margin:0px;
                        Welcome <strong>{{strtoupper(Auth::user()->name)}}</strong>
                        </a>
                     </li>
+                    <li class="dropdown">
+                     <a href="#" class="mega-dropdown-toggle">
+                       You Login as <strong>{{DB::table('user_role')->where('roleID',Auth::user()->userrole)->value('rolename')}}</strong>
+                       </a>
+                    </li>
 
                     <!--Mega dropdown-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -123,13 +118,7 @@ margin:0px;
                         </a>
 
                     </li>
-                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                    <!--End mega dropdown-->
-
-
-
-                    <!--Notification dropdown-->
-                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    
                     
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">
@@ -144,33 +133,21 @@ margin:0px;
 
                         </div>
                     </li>
-                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                    <!--End notifications dropdown-->
-
-
-
-                    <!--User dropdown-->
-                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    
                     <li id="dropdown-user" class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                                 <span class="ic-user pull-right">
-                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                                    <!--You can use an image instead of an icon.-->
-                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
-                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                    
                                     <i class="demo-pli-male"></i>
                                 </span>
-                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                            <!--You can also display a user name in the navbar.-->
-                            <!--<div class="username hidden-xs">Aaron Chavez</div>-->
-                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                           
                         </a>
 
 
                         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                             <ul class="head-list">
                                  <li>
-                                    <a href="{{url('create-user')}}"><i class="demo-pli-unlock icon-lg icon-fw"></i>Create User</a>
+                                    <a href="{{url('user/editAccount')}}"><i class="demo-pli-unlock icon-lg icon-fw"></i>Edit Profile</a>
                                 </li>
                                 <li>
                                     <a href="{{url('logout')}}"><i class="demo-pli-unlock icon-lg icon-fw"></i> Logout</a>
@@ -178,15 +155,6 @@ margin:0px;
                             </ul>
                         </div>
                     </li>
-                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                    <!--End user dropdown-->
-
-
-                    <!--<li>
-                        <a href="#" class="aside-toggle">
-                            <i class="demo-pli-dot-vertical"></i>
-                        </a>
-                    </li>-->
                 </ul>
             </div>
             <!--================================-->
@@ -197,11 +165,11 @@ margin:0px;
     <!--===================================================-->
     <!--END NAVBAR-->
 
-    <div class="boxed">
+    <div class="boxed" >
 
         <!--CONTENT CONTAINER-->
         <!--===================================================-->
-        <div id="content-container">
+        <div id="content-container" >
            @yield('pageHead')
 
 
@@ -240,23 +208,7 @@ margin:0px;
         <!--===================================================-->
         <nav id="mainnav-container" class="hidden-print">
             <div id="mainnav" >
-
-
-                <!--OPTIONAL : ADD YOUR LOGO TO THE NAVIGATION-->
-                <!--It will only appear on small screen devices.-->
-                <!--================================
-                <div class="mainnav-brand">
-                    <a href="{{url('/')}}" class="brand">
-                        <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
-                        <span class="brand-text">NJC</span>
-                    </a>
-                    <a href="#" class="mainnav-toggle"><i class="pci-cross pci-circle icon-lg"></i></a>
-                </div>
-                -->
-
-
-
-                <!--Menu-->
+            <!--Menu-->
                 <!--================================-->
                 <div id="mainnav-menu-wrap">
                     <div class="nano">
@@ -266,27 +218,15 @@ margin:0px;
                             <!--================================-->
                             <div id="mainnav-profile" class="mainnav-profile">
                                 <div class="profile-wrap text-center">
-                                    <div class="pad-btm">
-                                        <img class="img-circle img-md" src="{{asset('assets/img/njc-logo.jpg')}}" alt="Profile Picture">
-                                    </div>
                                     <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
                                             <span class="pull-right dropdown-toggle">
                                                 <i class="dropdown-caret"></i>
                                             </span>
-                                        <p class="mnp-name">NJC</p>
-                                        <!--<span class="mnp-desc">performance.evaluation@njc.gov.ng</span>-->
+                                        <p class="mnp-name">SSAS</p>
+                                        
                                     </a>
                                 </div>
                                 <div id="profile-nav" class="collapse list-group bg-trans">
-                                    <!--<a href="#" class="list-group-item">
-                                        <i class="demo-pli-male icon-lg icon-fw"></i> View Profile
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="demo-pli-gear icon-lg icon-fw"></i> Settings
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="demo-pli-information icon-lg icon-fw"></i> Help
-                                    </a>-->
                                     <a href="{{url('logout')}}" class="list-group-item">
                                         <i class="demo-pli-unlock icon-lg icon-fw"></i> Logout
                                     </a>
@@ -336,75 +276,22 @@ margin:0px;
                             @include('layouts.sidemenu')
                             @include('layouts.techsidemenu')
                            </ul>
-                         <!-- End sidebar -->
-
-
-                        </div>
+                         </div>
                     </div>
                 </div>
-                <!--================================-->
-                <!--End menu-->
-
-            </div>
+                </div>
         </nav>
-        <!--===================================================-->
-        <!--END MAIN NAVIGATION-->
-
-    </div>
-
-
-
-    <!-- FOOTER -->
-    <!--===================================================-->
-    <!--<footer id="footer"></footer>-->
-
-        <!-- Visible when footer positions are fixed -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <div class="show-fixed pad-rgt pull-right hidden-print">
-            You have <a href="#" class="text-main"><span class="badge badge-danger">3</span> pending action.</a>
         </div>
 
-
-
-        <!-- Visible when footer positions are static -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <div class="hide-fixed pull-right pad-rgt hidden-print">
-            All rights Reserve - <strong>National Judicial Council</strong>
+            All rights Reserve - <strong>Stolak SoFtech</strong>
         </div>
-
-
-
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-        <p class="pad-lft hidden-print">&#0169; 2018 Your Company</p>
-
-
-
-    
-    <!--===================================================-->
-    <!-- END FOOTER -->
-
-
-    <!-- SCROLL PAGE BUTTON -->
-    <!--===================================================-->
+        <p class="pad-lft hidden-print">&#0169; 2020 Stolak Softech</p>
     <button class="scroll-top btn hidden-print">
         <i class="pci-chevron chevron-up"></i>
     </button>
     <!--===================================================-->
 </div>
-<!--===================================================-->
-<!-- END OF CONTAINER -->
-
-
-
-
-
-<!--JAVASCRIPT-->
-<!--=================================================-->
-
-<!--jQuery [ REQUIRED ]-->
 <script src="{{ asset('assets/js/jquery.min.js')}}"></script>
 
 <!--BootstrapJS [ RECOMMENDED ]-->
@@ -422,7 +309,7 @@ margin:0px;
 
 <!--Sparkline [ OPTIONAL ]-->
 <script src="{{ asset('assets/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <!--Specify page [ SAMPLE ]-->
 <script src="{{ asset('assets/js/demo/dashboard.js')}}"></script>
 @yield('scripts')

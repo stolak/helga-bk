@@ -96,7 +96,9 @@
                 			@endphp
                             @foreach($CurrentAsset as $data)
                 				<tr>
-                        		<td><a target="_blank" href="/display/{{$asatdate}}/{{$data->subheadid}}" >{{  $data->Subhead}}</a></td>
+                        	
+                        		
+                        		<td><a target="_blank" href="/display/{{$asatdate}}/{{$data->subheadid}}" >{{  $data->Subhead}}</a>(Current)</td>
                         		<td><a target="_blank" href="/display/{{$asatdate}}/{{$data->subheadid}}" class="btn btn-success">Note{{$note++}}</a></td>
                         		<td style="text-align: right; ">@if( $data->tVal<0)({{  number_format(abs($data->tVal),2, '.', ',')}})  @else{{  number_format(abs($data->tVal),2, '.', ',')}} @endif</td>
                         		
@@ -105,7 +107,8 @@
                         	@endforeach
                         	@foreach($FixedAsset as $data)
                 				<tr>
-                        		<td><a target="_blank" href="/display/{{$asatdate}}/{{$data->subheadid}}" >{{  $data->Subhead}}</a></td>
+                        		
+                        		<td><a target="_blank" href="/display/{{$asatdate}}/{{$data->subheadid}}" >{{  $data->Subhead}}</a>(Fixed)</td>
                         		<td><a target="_blank" href="/display/{{$asatdate}}/{{$data->subheadid}}" class="btn btn-success">Note{{$note++}}</a></td>
                         		<td style="text-align: right; ">@if( $data->tVal<0)({{  number_format(abs($data->tVal),2, '.', ',')}})  @else{{  number_format(abs($data->tVal),2, '.', ',')}} @endif </td>
                         		

@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label class="control-label">Account Type</label>
+                                    <label class="control-label">Account Head</label>
                                     <select  class="form-control" name="acchead" onchange="Reload();">
                                      <option value="">--Select--</option>
                                           @foreach($AccountHead as $list)
@@ -79,7 +79,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label">Sub Account</label>
+                                    <label class="control-label">Account Type</label>
                                     <select  class="form-control" name="subhead" onchange="Reload();">
                                      <option value="">--Select--</option>
                                           @foreach($SubAccountList as $list)
@@ -119,9 +119,9 @@
 		          <tr bgcolor="#c7c7c7">
 		          
 		            <th>S/N</th>
+		            <th>Account Head</th>
 		            <th>Account Type</th>
-		            <th>Sub Account</th>
-		            <th>Code</th>
+		            <th>Account Number</th>
 		            <th>Account Description</th>
 		            <th>Rank</th>
 		            <th>Action</th>
