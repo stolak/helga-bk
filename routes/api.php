@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SubsidiaryApiController;
 use App\Http\Controllers\Api\MediaPhotoApiController;
 use App\Http\Controllers\Api\MediaVideoApiController;
+use App\Http\Controllers\Api\ContactUsApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::get('/media-photos/grouped-by-category', [MediaPhotoApiController::class,
 // Public read-only media videos API
 Route::get('/media-videos', [MediaVideoApiController::class, 'index']);
 Route::get('/media-videos/{id}', [MediaVideoApiController::class, 'showById'])->whereNumber('id');
+
+// Public contact-us endpoint (stores and queues emails)
+Route::post('/contact-us', [ContactUsApiController::class, 'store']);
