@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
     <!-- Favicons -->
-    <link href="assets2/img/njc-logo2.jpg" rel="icon">
+    <link href="{{ asset('assets2/img/njc-logo2.jpg') }}" rel="icon">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets2/css/bootstrap.min.css') }}">
 
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="assets2/plugins/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="assets2/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('assets2/plugins/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets2/plugins/fontawesome/css/all.min.css') }}">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets2/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets2/css/style.css') }}">
 </head>
 
 <body class="account-page">
@@ -30,7 +30,7 @@
             <nav class="navbar navbar-expand-lg header-nav">
                 <div class="navbar-header">
                     <a href="/" class="navbar-brand logo">
-                        <img src="assets/img/logo.jpeg" class="img-fluid" alt="">
+                        <img src="{{ asset('assets/img/logo.jpeg') }}" class="img-fluid" alt="">
                     </a>
                 </div>
 
@@ -56,7 +56,7 @@
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-md-7 col-lg-6 login-left">
                                     <h2 style="text-align: center">FINANCE SOLUTIONS</h2>
-                                    <img src="assets2/img/budget-banner.jpg" class="img-fluid"
+                                    <img src="{{ asset('assets2/img/budget-banner.jpg') }}" class="img-fluid"
                                         alt="Budget Management System">
                                 </div>
                                 <div class="col-md-12 col-lg-6 login-right">
@@ -138,14 +138,14 @@
     <!-- /Main Wrapper -->
 
     <!-- jQuery -->
-    <script src="assets2/js/jquery.min.js"></script>
+    <script src="{{ asset('assets2/js/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core JS -->
-    <script src="assets2/js/popper.min.js"></script>
-    <script src="assets2/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets2/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets2/js/bootstrap.min.js') }}"></script>
 
     <!-- Custom JS -->
-    <script src="assets2/js/script.js"></script>
+    <script src="{{ asset('assets2/js/script.js') }}"></script>
 
 </body>
 
