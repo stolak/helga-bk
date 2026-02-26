@@ -16,6 +16,9 @@ use App\Http\Controllers\HR;
 use App\Http\Controllers\Payroll;
 use App\Http\Controllers\PDFReport;
 use App\Http\Controllers\Auth\UserRoleController as AuthUserRoleController;
+use App\Http\Controllers\SubsidiaryController;
+use App\Http\Controllers\MediaPhotoController;
+use App\Http\Controllers\MediaVideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'route.access'])->group(function () {
@@ -153,6 +156,15 @@ Route::any('/salary-payslip',       [Payroll::class, 'Payslip']);
 Route::any('/payroll-lock',         [Payroll::class, 'PayrollLock']);
 Route::any('/variable-contribution-setup', [Payroll::class, 'VariableContributionSetup']);
     Route::any('/user-role',            [AuthUserRoleController::class, 'index']);
+
+    // Subsidiary CRUD (single submission form includes subsidiary_activities)
+    Route::any('/subsidiary-setup', [SubsidiaryController::class, 'setup'])->name('subsidiarySetup');
+
+    // Media Photo Category + Photos CRUD (single submission supports url or upload)
+    Route::any('/media-photo-setup', [MediaPhotoController::class, 'setup'])->name('mediaPhotoSetup');
+
+    // Media Video CRUD (URL required; no uploads)
+    Route::any('/media-video-setup', [MediaVideoController::class, 'setup'])->name('mediaVideoSetup');
     });
 
 Route::get('/vendor-project-acknowledge', [ProjectController::class, 'vendorProjectAcknowledge'])
