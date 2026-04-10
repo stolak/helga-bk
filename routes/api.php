@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\SubsidiaryApiController;
 use App\Http\Controllers\Api\MediaPhotoApiController;
 use App\Http\Controllers\Api\MediaVideoApiController;
 use App\Http\Controllers\Api\ContactUsApiController;
+use App\Http\Controllers\Api\BusinessQuoteApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,6 @@ Route::get('/media-videos/{id}', [MediaVideoApiController::class, 'showById'])->
 
 // Public contact-us endpoint (stores and queues emails)
 Route::post('/contact-us', [ContactUsApiController::class, 'store']);
+
+// Public business quote endpoint (stores quote request)
+Route::post('/business-quotes', [BusinessQuoteApiController::class, 'store']);
