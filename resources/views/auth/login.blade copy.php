@@ -55,9 +55,9 @@
                         <div class="account-content">
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-md-7 col-lg-6 login-left">
-                                    <h2 style="text-align: center">CRM SYSTEM</h2>
-                                    <!-- <img src="{{ asset('assets2/img/crm-banner.jpg') }}" class="img-fluid"
-                                        alt="CRM System"> -->
+                                    <h2 style="text-align: center">FINANCE SOLUTIONS</h2>
+                                    <img src="{{ asset('assets2/img/budget-banner.jpg') }}" class="img-fluid"
+                                        alt="Budget Management System">
                                 </div>
                                 <div class="col-md-12 col-lg-6 login-right">
                                     <div class="login-header">

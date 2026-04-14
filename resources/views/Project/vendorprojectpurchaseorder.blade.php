@@ -491,7 +491,7 @@
             <div class="top-green-strip"></div>
             <div class="header">
                 <div class="header-left">
-                    <img src="{{ $logoDataUri ?? (!empty($pdfMode) ? $logoPath ?? public_path('assets/img/logo.jpeg') : asset('assets/img/logo.jpeg')) }}"
+                    <img src="{{ $logoDataUri ?? (!empty($pdfMode) ? $logoPath ?? public_path('assets/img/logo2.png') : asset('assets/img/logo2.png')) }}"
                         alt="Company Logo" class="logo">
                     <div class="company-meta">
                         {{ env('Coy_Address', 'Plot 1a Remi Olowude Street, Lekki Phase 1, Lagos.') }}<br>

@@ -20,7 +20,7 @@
             </div>
         </div>
         <!-- /Page Header -->
-
+<!-- 
         <div class="row">
             @If(Auth::user()->userrole!==5)
             <div class="col-xl-3 col-sm-6 col-12">
@@ -118,7 +118,7 @@
                 </div>
             </div>
             @endif
-        </div>
+        </div> -->
 
 
 

@@ -7,7 +7,7 @@
     <title>@yield('pageTitle')</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.jpeg">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo2.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -42,10 +42,10 @@
                 <!-- Logo -->
                 <div class="header-left">
                     <a href="/" class="logo">
-                        <img src="{{ asset('assets/img/logo.jpeg') }}" alt="Logo">
+                        <img src="{{ asset('assets/img/logo2.png') }}" alt="Logo">
                     </a>
                     <a href="/" class="logo logo-small">
-                        <img src="{{ asset('assets/img/logo.jpeg') }}" alt="Logo" width="30" height="30">
+                        <img src="{{ asset('assets/img/logo2.png') }}" alt="Logo" width="30" height="30">
                     </a>
                 </div>
                 <!-- /Logo -->

@@ -410,7 +410,7 @@
                                 <div id="payslip-content" class="payslip-container">
                                     <div class="payslip-header">
                                         <div>
-                                            <img src="{{ asset('assets/img/logo.jpeg') }}" alt="Logo" class="payslip-logo" />
+                                            <img src="{{ asset('assets/img/logo2.png') }}" alt="Logo" class="payslip-logo" />
                                         </div>
                                         <div class="payslip-company-info">
                                             <h2 class="payslip-company-name">{{ env('Coy_Name', 'McEmtol CONSULTING') }}</h2>

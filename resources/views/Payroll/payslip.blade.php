@@ -88,7 +88,7 @@
     <table class="empDetail">
         <tr height="100px" style=''>
             <td colspan='4'>
-                <img height="90px" src='https://app.credithubltd.com/assets/img/logo.jpeg' />
+                <img height="90px" src='https://app.credithubltd.com/assets/img/logo2.png' />
             </td>
             <td colspan='4' class="companyName">ACCOUNTING SOLUTIONS</td>
         </tr>

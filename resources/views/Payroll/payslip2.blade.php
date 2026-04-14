@@ -347,7 +347,7 @@
                                 <div id="payslip-content" class="payslip-container">
                                     <div class="payslip-header">
                                         <div>
-                                            <img src="{{ asset('assets/img/logo.jpeg') }}" alt="Logo"
+                                            <img src="{{ asset('assets/img/logo2.png') }}" alt="Logo"
                                                 class="payslip-logo" />
                                         </div>
                                         <div class="payslip-company-info">

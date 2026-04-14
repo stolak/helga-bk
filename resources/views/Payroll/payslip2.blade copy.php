@@ -215,7 +215,7 @@
                                     <table class="empDetail">
                                         <tr height="100px">
                                             <td class="no-border-right">
-                                                <img height="30px" src='{{ asset('assets/img/logo.jpeg') }}' />
+                                                <img height="30px" src='{{ asset('assets/img/logo2.png') }}' />
                                             </td>
                                             <td colspan="2" class="no-border-left"></td>
                                             <td colspan='3' class="companyName">

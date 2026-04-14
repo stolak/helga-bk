@@ -3366,7 +3366,7 @@ class ProjectController extends Basefunction {
                 'email' => env('Coy_Email', 'info@mcemtolconsulting.com'),
                 'phone' => env('Coy_Phone', '+234 (0) 810 071 1620'),
                 'website' => env('Coy_Website', 'www.mcemtolconsulting.com'),
-                'logo' => asset('assets/img/logo.jpeg'),
+                'logo' => asset('assets/img/logo2.png'),
             ],
         ];
 
@@ -4159,7 +4159,7 @@ class ProjectController extends Basefunction {
             }
 
             $poData['pdfMode'] = true;
-            $poData['logoPath'] = public_path('assets/img/logo.jpeg');
+            $poData['logoPath'] = public_path('assets/img/logo2.png');
             $poData['logoDataUri'] = $this->buildPoLogoDataUri();
             $pdfBinary = $this->generateVendorPoPdfBinary($poData);
             $poNumber = $poData['poNumber'] ?? ('VPO-' . str_pad((string) $vendorProjectId, 6, '0', STR_PAD_LEFT));
@@ -4258,7 +4258,7 @@ class ProjectController extends Basefunction {
 
     private function buildPoLogoDataUri()
     {
-        $logoPath = public_path('assets/img/logo.jpeg');
+        $logoPath = public_path('assets/img/logo2.png');
         if (!file_exists($logoPath)) {
             return null;
         }

@@ -7,6 +7,9 @@ use App\Http\Controllers\Api\MediaPhotoApiController;
 use App\Http\Controllers\Api\MediaVideoApiController;
 use App\Http\Controllers\Api\ContactUsApiController;
 use App\Http\Controllers\Api\BusinessQuoteApiController;
+use App\Http\Controllers\Api\ServicesApiController;
+use App\Http\Controllers\Api\AmenitiesApiController;
+use App\Http\Controllers\Api\PageBannerApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +40,16 @@ Route::get('/media-photos/grouped-by-category', [MediaPhotoApiController::class,
 // Public read-only media videos API
 Route::get('/media-videos', [MediaVideoApiController::class, 'index']);
 Route::get('/media-videos/{id}', [MediaVideoApiController::class, 'showById'])->whereNumber('id');
+
+// Public read-only services API
+Route::get('/services', [ServicesApiController::class, 'index']);
+
+// Public read-only amenities API
+Route::get('/amenities', [AmenitiesApiController::class, 'index']);
+
+// Public read-only page banners API
+Route::get('/page-banners', [PageBannerApiController::class, 'index']);
+Route::get('/page-banners/{id}', [PageBannerApiController::class, 'showById'])->whereNumber('id');
 
 // Public contact-us endpoint (stores and queues emails)
 Route::post('/contact-us', [ContactUsApiController::class, 'store']);

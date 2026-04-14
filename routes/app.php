@@ -19,6 +19,9 @@ use App\Http\Controllers\Auth\UserRoleController as AuthUserRoleController;
 use App\Http\Controllers\SubsidiaryController;
 use App\Http\Controllers\MediaPhotoController;
 use App\Http\Controllers\MediaVideoController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\AmenitiesController;
+use App\Http\Controllers\PageBannerController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'route.access'])->group(function () {
@@ -165,6 +168,15 @@ Route::any('/variable-contribution-setup', [Payroll::class, 'VariableContributio
 
     // Media Video CRUD (URL required; no uploads)
     Route::any('/media-video-setup', [MediaVideoController::class, 'setup'])->name('mediaVideoSetup');
+
+    // Services CRUD (image upload + nullable JSON tags)
+    Route::any('/services-setup', [ServicesController::class, 'setup'])->name('servicesSetup');
+
+    // Amenities CRUD (image upload; no tags)
+    Route::any('/amenities-setup', [AmenitiesController::class, 'setup'])->name('amenitiesSetup');
+
+    // Page Banner CRUD (image upload)
+    Route::any('/page-banner-setup', [PageBannerController::class, 'setup'])->name('pageBannerSetup');
     });
 
 Route::get('/vendor-project-acknowledge', [ProjectController::class, 'vendorProjectAcknowledge'])
