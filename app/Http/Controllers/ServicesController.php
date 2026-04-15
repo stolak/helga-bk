@@ -9,6 +9,78 @@ class ServicesController extends Controller
 {
     public function setup(Request $request)
     {
+        // Add multiple images to a service
+        if (isset($_POST['add_service_images'])) {
+            $this->validate($request, [
+                'serviceId' => 'required|integer',
+                'images' => 'required',
+                'images.*' => 'file|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
+            ]);
+
+            $serviceId = (int) $request->input('serviceId');
+            $service = DB::table('services')->where('id', $serviceId)->first();
+            if (!$service) {
+                return back()->with('error', 'Service not found.');
+            }
+
+            $files = $request->file('images', []);
+            if (!is_array($files)) {
+                $files = [$files];
+            }
+
+            $uploadDir = public_path('upload/services/images');
+            if (!is_dir($uploadDir)) {
+                @mkdir($uploadDir, 0755, true);
+            }
+
+            $now = now()->toDateTimeString();
+            $rows = [];
+
+            foreach ($files as $file) {
+                if (!$file) {
+                    continue;
+                }
+
+                $ext = $file->getClientOriginalExtension();
+                $filename = time() . '_' . bin2hex(random_bytes(6)) . '.' . $ext;
+                $file->move($uploadDir, $filename);
+                $imageUrl = '/upload/services/images/' . $filename;
+
+                $rows[] = [
+                    'serviceId' => $serviceId,
+                    'images' => $imageUrl,
+                    'createdAt' => $now,
+                    'updatedAt' => $now,
+                ];
+            }
+
+            if (count($rows) === 0) {
+                return back()->with('error', 'No images were uploaded.');
+            }
+
+            DB::table('service_images')->insert($rows);
+
+            return redirect('services-setup?edit=' . $serviceId)->with('message', 'Service images uploaded successfully.');
+        }
+
+        // Delete a single service image
+        if (isset($_POST['delete_service_image'])) {
+            $this->validate($request, [
+                'id' => 'required|integer',
+                'serviceId' => 'required|integer',
+            ]);
+
+            $imageId = (int) $request->input('id');
+            $serviceId = (int) $request->input('serviceId');
+
+            DB::table('service_images')
+                ->where('id', $imageId)
+                ->where('serviceId', $serviceId)
+                ->delete();
+
+            return redirect('services-setup?edit=' . $serviceId)->with('message', 'Service image deleted successfully.');
+        }
+
         // Delete service
         if (isset($_POST['delete'])) {
             $this->validate($request, [
@@ -16,6 +88,7 @@ class ServicesController extends Controller
             ]);
 
             DB::table('services')->where('id', (int) $request->input('id'))->delete();
+            DB::table('service_images')->where('serviceId', (int) $request->input('id'))->delete();
 
             return back()->with('message', 'Service deleted successfully.');
         }
@@ -85,6 +158,14 @@ class ServicesController extends Controller
             $data['edit'] = DB::table('services')
                 ->where('id', (int) $request->query('edit'))
                 ->first();
+        }
+
+        $data['editImages'] = collect();
+        if ($data['edit']) {
+            $data['editImages'] = DB::table('service_images')
+                ->where('serviceId', (int) $data['edit']->id)
+                ->orderBy('id', 'desc')
+                ->get();
         }
 
         return view('Setup.services', $data);

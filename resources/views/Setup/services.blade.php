@@ -102,6 +102,67 @@
                                     @endif
                                 </div>
                             </form>
+
+                            @if ($edit)
+                                <hr>
+                                <div class="form-group mb-2">
+                                    <label class="mb-1">Additional Images (multiple upload)</label>
+                                    <small class="text-muted d-block">
+                                        These images are stored in <code>service_images</code> and can be unlimited.
+                                    </small>
+                                </div>
+
+                                <form method="post" enctype="multipart/form-data"
+                                    style="border: 1px dashed #ddd; padding: 12px; border-radius: 6px;">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="serviceId" value="{{ $edit->id }}">
+                                    <div class="form-group mb-2">
+                                        <input type="file" name="images[]" class="form-control"
+                                            accept=".jpg,.jpeg,.png,.gif,.svg,.webp" multiple required>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-sm btn-secondary" name="add_service_images">
+                                            Upload Images
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <div class="mt-3">
+                                    <label class="d-block mb-2">Current Additional Images</label>
+                                    @if (isset($editImages) && count($editImages) > 0)
+                                        <div class="row">
+                                            @foreach ($editImages as $img)
+                                                <div class="col-6 mb-3">
+                                                    <div class="border rounded p-2">
+                                                        <a href="{{ $img->images }}" target="_blank">
+                                                            <img src="{{ $img->images }}" alt="service image"
+                                                                class="img-fluid"
+                                                                style="height: 120px; width: 100%; object-fit: cover;">
+                                                        </a>
+                                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                                            <div class="small text-truncate" style="max-width: 170px;">
+                                                                <a href="{{ $img->images }}" target="_blank">{{ $img->images }}</a>
+                                                            </div>
+                                                            <form method="post" style="display:inline-block"
+                                                                onsubmit="return confirm('Delete this image?')">
+                                                                {{ csrf_field() }}
+                                                                <input type="hidden" name="id" value="{{ $img->id }}">
+                                                                <input type="hidden" name="serviceId" value="{{ $edit->id }}">
+                                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                                    name="delete_service_image">
+                                                                    Delete
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <div class="text-muted">No additional images yet.</div>
+                                    @endif
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

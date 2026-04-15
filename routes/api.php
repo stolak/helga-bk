@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\BusinessQuoteApiController;
 use App\Http\Controllers\Api\ServicesApiController;
 use App\Http\Controllers\Api\AmenitiesApiController;
 use App\Http\Controllers\Api\PageBannerApiController;
+use App\Http\Controllers\Api\PricingApiController;
+use App\Http\Controllers\Api\LandingBannerApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,12 @@ Route::get('/amenities', [AmenitiesApiController::class, 'index']);
 // Public read-only page banners API
 Route::get('/page-banners', [PageBannerApiController::class, 'index']);
 Route::get('/page-banners/{id}', [PageBannerApiController::class, 'showById'])->whereNumber('id');
+
+// Public read-only landing banners API (returns all)
+Route::get('/landing-banners', [LandingBannerApiController::class, 'index']);
+
+// Public read-only pricing grouped by card position (joins pricing_category + pricing)
+Route::get('/pricing-by-cards', [PricingApiController::class, 'groupedByCard']);
 
 // Public contact-us endpoint (stores and queues emails)
 Route::post('/contact-us', [ContactUsApiController::class, 'store']);

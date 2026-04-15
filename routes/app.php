@@ -22,6 +22,8 @@ use App\Http\Controllers\MediaVideoController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\AmenitiesController;
 use App\Http\Controllers\PageBannerController;
+use App\Http\Controllers\LandingBannerController;
+use App\Http\Controllers\PricingController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'route.access'])->group(function () {
@@ -177,6 +179,12 @@ Route::any('/variable-contribution-setup', [Payroll::class, 'VariableContributio
 
     // Page Banner CRUD (image upload)
     Route::any('/page-banner-setup', [PageBannerController::class, 'setup'])->name('pageBannerSetup');
+
+    // Landing Banner CRUD (image upload)
+    Route::any('/landing-banner-setup', [LandingBannerController::class, 'setup'])->name('landingBannerSetup');
+
+    // Pricing + Card assignment CRUD
+    Route::any('/pricing-setup', [PricingController::class, 'setup'])->name('pricingSetup');
     });
 
 Route::get('/vendor-project-acknowledge', [ProjectController::class, 'vendorProjectAcknowledge'])
