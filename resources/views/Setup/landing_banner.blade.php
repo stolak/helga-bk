@@ -46,6 +46,14 @@
                                         maxlength="5000">{{ old('message', $edit->message ?? '') }}</textarea>
                                 </div>
 
+                                <div class="form-group">
+                                    <label>Rank</label>
+                                    <input type="number" name="ranks" class="form-control" min="0"
+                                        value="{{ old('ranks', $edit->ranks ?? '') }}" autocomplete="off"
+                                        placeholder="Lower numbers show first">
+                                    <small class="text-muted">Ordering uses rank ascending (lower first).</small>
+                                </div>
+
                                 @if ($edit)
                                     <div class="form-group">
                                         <label>Status <span class="text-danger">*</span></label>
@@ -106,6 +114,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Rank</th>
                                             <th>Message</th>
                                             <th>Status</th>
                                             <th>Image</th>
@@ -116,6 +125,7 @@
                                         @forelse ($banners as $b)
                                             <tr>
                                                 <td>{{ $b->id }}</td>
+                                                <td>{{ $b->ranks ?? '—' }}</td>
                                                 <td class="text-truncate" style="max-width: 300px;">{{ $b->message }}</td>
                                                 <td>
                                                     @if (($b->status ?? 'Active') === 'Active')
@@ -149,7 +159,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="5" class="text-center text-muted">No banners yet.</td>
+                                                <td colspan="6" class="text-center text-muted">No banners yet.</td>
                                             </tr>
                                         @endforelse
                                     </tbody>

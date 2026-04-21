@@ -15,7 +15,8 @@ class LandingBannerApiController extends Controller
     public function index(Request $request): JsonResponse
     {
         $banners = DB::table('landing_banner')
-            ->select('id', 'message', 'image', 'status', 'createdAt', 'updatedAt')
+            ->select('id', 'message', 'image', 'status', 'ranks', 'createdAt', 'updatedAt')
+            ->orderBy('ranks', 'asc')
             ->orderBy('id', 'desc')
             ->get();
 

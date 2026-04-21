@@ -24,6 +24,7 @@ class LandingBannerController extends Controller
         if (isset($_POST['addnew']) || isset($_POST['update'])) {
             $rules = [
                 'message' => 'required|string|max:5000',
+                'ranks' => 'nullable|integer|min:0',
                 'image' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
             ];
 
@@ -57,6 +58,7 @@ class LandingBannerController extends Controller
             $payload = [
                 'message' => $request->input('message'),
                 'image' => $imageUrl,
+                'ranks' => $request->input('ranks') !== null && $request->input('ranks') !== '' ? (int) $request->input('ranks') : null,
                 'updatedAt' => now()->toDateTimeString(),
             ];
 
@@ -73,7 +75,10 @@ class LandingBannerController extends Controller
         }
 
         // Page data
-        $data['banners'] = DB::table('landing_banner')->orderBy('id', 'desc')->get();
+        $data['banners'] = DB::table('landing_banner')
+            ->orderBy('ranks', 'asc')
+            ->orderBy('id', 'desc')
+            ->get();
 
         $data['edit'] = null;
         if ($request->filled('edit')) {
